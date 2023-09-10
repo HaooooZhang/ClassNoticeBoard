@@ -1,0 +1,22 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon src/main.ts",
+        "build": "tsc -p ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "winston": "^3.10.0",
+        "ws": "^8.13.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.2.2"
+    }
+}
