@@ -88,7 +88,7 @@ export default function ChatPage() {
       const input = event.target as HTMLTextAreaElement
       if (input.value === "") return
       const message: Message = {
-        sender: "You",
+        sender: "您",
         content: input.value,
         time: Date.now()
       }
@@ -147,7 +147,7 @@ export default function ChatPage() {
           name="input"
           id="input"
           className="textarea text-lg pt-3 w-full h-40 bg-base-100 drop-shadow z-10 rounded-none focus:outline-none"
-          placeholder="Type a message..."
+          placeholder="在此输入消息..."
           onKeyDown={handleKeyDown}
         />
       </div>
