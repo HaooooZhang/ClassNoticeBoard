@@ -46,7 +46,7 @@ export default function chatPreview(props: Chat) {
         </Link>
       </li>
       <ContextMenu targetId={`chat-${props.title}`} options={[{
-        text: "Delete",
+        text: "删除",
         onClick: leaveChat
       }]}/>
     </Fragment>

@@ -38,9 +38,9 @@ const Settings = forwardRef((_, ref) => {
   return (
     <dialog ref={dialogRef} id="settings" className="modal">
       <form method="dialog" className="modal-box">
-        <h3 className="font-bold text-lg">Settings</h3>
+        <h3 className="font-bold text-lg">设置</h3>
         <div className="pt-3">
-          <label htmlFor="nickname">Nickname:</label>
+          <label htmlFor="nickname">用户名:</label>
           <input
             id="nickname"
             type="text"
@@ -50,7 +50,7 @@ const Settings = forwardRef((_, ref) => {
           />
         </div>
         <div className="pt-3">
-          <label htmlFor="port">Port:</label>
+          <label htmlFor="port">端口:</label>
           <input
             id="port"
             type="number"
@@ -61,9 +61,9 @@ const Settings = forwardRef((_, ref) => {
             className="ml-2 input input-bordered input-sm"
           />
         </div>
-        <p className="text-xs pt-3 pb-0">Press ESC key to undo, or click the button below to save setting</p>
+        <p className="text-xs pt-3 pb-0">按下 ESC 键以取消，或按下保存键以保存设置</p>
         <div className="modal-action">
-          <button className="btn btn-sm" onClick={() => save()}>Save</button>
+          <button className="btn btn-sm" onClick={() => save()}>保存</button>
         </div>
       </form>
     </dialog>
