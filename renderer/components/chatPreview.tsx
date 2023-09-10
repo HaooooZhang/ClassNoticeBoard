@@ -15,6 +15,7 @@ type Chat = {
 
 export default function chatPreview(props: Chat) {
   const router = useRouter()
+  const {id} = router.query
 
   const {sendJsonMessage} = useWebSocket(getSocketUrl, {
     share: true,
@@ -27,7 +28,7 @@ export default function chatPreview(props: Chat) {
     })
     chatsStore.set("chats", (chatsStore.get("chats") as Chat[]).filter(chat => chat.title !== props.title))
     messagesStore.delete(props.title)
-    router.push("/home").then()
+    router.push("/").then()
   }
 
   return (

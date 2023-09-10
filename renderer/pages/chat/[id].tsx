@@ -88,7 +88,7 @@ export default function ChatPage() {
       const input = event.target as HTMLTextAreaElement
       if (input.value === "") return
       const message: Message = {
-        sender: "您",
+        sender: "You",
         content: input.value,
         time: Date.now()
       }
@@ -131,8 +131,8 @@ export default function ChatPage() {
             messages &&
             messages.length > 0 &&
             messages.map((message, index) => (
-              <Fragment>
-                <MessageContent key={index} id={`message-content-${index}`} message={message}/>
+              <Fragment key={index}>
+                <MessageContent id={`message-content-${index}`} message={message}/>
                 <ContextMenu targetId={`message-content-${index}`} options={[{
                   text: "Delete",
                   onClick: () => {
@@ -147,7 +147,7 @@ export default function ChatPage() {
           name="input"
           id="input"
           className="textarea text-lg pt-3 w-full h-40 bg-base-100 drop-shadow z-10 rounded-none focus:outline-none"
-          placeholder="在此输入消息..."
+          placeholder="Type a message..."
           onKeyDown={handleKeyDown}
         />
       </div>

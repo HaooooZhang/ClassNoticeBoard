@@ -15,7 +15,7 @@ export default function Sidebar(props: {
   const [chats, setChats] = useState<Chat[]>([])
   const [newChat, setNewChat] = useState<string>("")
 
-  let [status, setStatus] = useState<string>("未连接")
+  let [status, setStatus] = useState<string>("Disconnected")
 
   const {sendJsonMessage, readyState} = useWebSocket(getSocketUrl, {
     share: true,
@@ -55,15 +55,15 @@ export default function Sidebar(props: {
 
   useEffect(() => {
     if (readyState === ReadyState.OPEN) {
-      setStatus("已连接")
+      setStatus("Connected")
     } else if (readyState === ReadyState.CLOSED) {
-      setStatus("未连接")
+      setStatus("Disconnected")
     } else if (readyState === ReadyState.CONNECTING) {
-      setStatus("连接中")
+      setStatus("Connecting")
     } else if (readyState === ReadyState.CLOSING) {
-      setStatus("取消连接")
+      setStatus("Disconnecting")
     } else {
-      setStatus("未知状态")
+      setStatus("Unknown")
     }
   }, [readyState]);
 
@@ -79,7 +79,7 @@ export default function Sidebar(props: {
           title: newChat,
           lastMessage: {
             sender: settingsStore.get("nickname") as string,
-            content: "新建了此通知",
+            content: "Joined the chat",
             time: Date.now()
           }
         }
@@ -97,7 +97,7 @@ export default function Sidebar(props: {
       <aside className="z-20 overflow-y-auto scroll-smooth bg-base-200 w-[235px] h-screen pr-2 shadow select-none">
         <ul className="menu">
           <div className="sticky top-0 bg-base-200 z-30">
-            <h2 className="menu-title">班级公告板 <span>({status})</span></h2>
+            <h2 className="menu-title">Chats <span>({status})</span></h2>
             <button className="absolute top-1.5 right-0 btn btn-xs btn-ghost btn-square text-neutral"
                     onClick={() => props.openSettings()}>
               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48"
@@ -108,7 +108,7 @@ export default function Sidebar(props: {
             </button>
             <div className="ml-2 join top-0">
               <input className="input input-sm input-bordered join-item focus:outline-none" type="text"
-                     placeholder="搜索..."/>
+                     placeholder="Search"/>
               <button className="btn btn-sm btn-neutral btn-square join-item"
                       onClick={() => newChatRef.current?.showModal()}>+
               </button>
@@ -120,7 +120,7 @@ export default function Sidebar(props: {
             chats.length > 0 &&
             chats.map((chat, index) => (
               <ChatPreview
-                key={index}
+                key={chat.title}
                 title={chat.title}
                 time={chat.lastMessage.time}
                 lastMessage={`${chat.lastMessage.sender}: ${chat.lastMessage.content}`}
@@ -140,10 +140,10 @@ export default function Sidebar(props: {
               className="input input-sm input-bordered join-item focus:outline-none"
             />
             <div className="modal-action">
-              <button className="join-item btn btn-sm" onClick={createNewChat}>CREATE</button>
+              <button className="join-item btn btn-sm" onClick={createNewChat}>Create</button>
             </div>
           </div>
-          <p className="text-xs pt-3 pb-0">按下 ESC 键以取消，或按下 CREATE 键新建通知</p>
+          <p className="text-xs pt-3 pb-0">Press ESC key to cancel, or click the button to create new chat</p>
         </form>
       </dialog>
     </Fragment>

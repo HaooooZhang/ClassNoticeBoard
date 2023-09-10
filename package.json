@@ -1,15 +1,10 @@
 {
     "private": true,
-    "name": "classnoticeboard",
-    "description": "A classroom bulletin board program for teacher-student communication.",
+    "name": "simple_chat",
+    "description": "A simple chat app built with Nextron.",
     "version": "1.0.0",
     "author": "HaooooZhang,cloud,lelouch",
     "main": "app/background.js",
-    "keywords": [
-        "class",
-        "noticeboard"
-      ],
-    "license": "MIT",
     "scripts": {
         "dev": "nextron",
         "build": "nextron build",
